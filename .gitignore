@@ -1,3 +1,18 @@
+# downloads
+*/**/Downloads
+*/**/downloads
+
+# tools documentations
+/Documentation
+/documentation
+*/**/Documentation
+*/**/documentation
+
+# emacs files
+\#*
+.#*
+*~
+~*
 # Compiled class file
 *.class
 
