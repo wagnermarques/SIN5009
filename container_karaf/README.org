@@ -1,0 +1,91 @@
+#+Title: Karaf Usage
+#+Subtitle:
+
+* Introduction
+  This is a starting working with karaf
+  The main purpose of this file is presents some basic concepts of
+  karaf to use this instalation a its specifics configurations set.
+
+* Baiscs of Karaf
+  
+** Shell do Karaf
+   Comandos básicos do shell podem ser encontrados em 
+   https://karaf.apache.org/manual/latest/#_shell_console_basics  
+*** usando shell remotamente
+   https://karaf.apache.org/manual/latest/remote
+   ssh:ssh -p 8101 karaf@localhost system:shutdown -f
+*** karaf shellscripts
+   https://svn.apache.org/repos/asf/karaf/site/production/manual/latest/scripting.html
+  
+** Karaf Features
+   Pense em feature como "funcionalidade mesmo"
+   Mas pense também que uma funcionalidade em geral é composta de mais
+   de um artefato de software que vão trabalhar juntos pra prover uma
+   determinada funcionaldiade.
+   Nesse sentido, quando vc instalada uma feature no karaf é
+   exatamente isso que é feito, o karaf vê tudo que é necessário pra
+   fazer a funcionaldiade funcionar e instala tudo pra gente de uma
+   maneira muitíssimo mais simples.
+   Um bom exemplo de funcionalidade é a do webconsole.
+   
+* Features Installing  
+  http://karaf.922171.n3.nabble.com/howto-write-karaf-shell-scripts-td4026124.html
+  http://blog.anvard.org/articles/2016/10/21/karaf-features-boot.html
+  https://dzone.com/articles/karaf-features-at-startup
+  http://karaf.922171.n3.nabble.com/Struggling-to-Install-features-on-startup-td4028413.html
+  
+* webconsole
+  https://karaf.apache.org/manual/latest/webconsole
+   #+NAME:                   
+   #+BEGIN_SRC shell :session s1 :results output :exports both
+      #starts code
+      ./
+   #+END_SRC
+
+   #+RESULTS: 
+   #+begin_example
+
+   [wagner@Unknown fzl_karaf]$ total 64
+   drwxrwxrwx. 3 wagner wagner 4096 ago  6 16:17 container_config_folder
+   drwxrwxr-x. 2 wagner wagner 4096 ago  6 15:22 container_shared_folder
+   -rwxrwxrwx. 1 wagner wagner  168 set 18  2018 docker-build-behind-proxy.sh
+   -rwxrwxrwx. 1 wagner wagner   61 ago  6 22:14 docker-build.sh
+   -rwxrwxr-x. 1 wagner wagner   84 jun 18 21:20 docker-exec-karaf-client-log-display.sh
+   -rwxrwxr-x. 1 wagner wagner   74 ago  6 22:21 docker-exec-karaf-client-prompt.sh
+   -rwxrwxrwx. 1 wagner wagner 1778 ago  6 20:42 Dockerfile
+   -rwxrwxrwx. 1 wagner wagner  962 ago  6 21:44 docker-run.sh
+   -rwxrwxrwx. 1 wagner wagner   72 set 18  2018 docker-start.sh
+   drwxrwxr-x. 3 wagner wagner 4096 ago  6 15:33 downloads
+   drwxr-xr-x. 2 wagner wagner 4096 ago  6 15:22 fzlbpms
+   -rw-rw-r--. 1 wagner wagner   55 jun 18 21:28 index.org
+   -rwxrwxr-x. 1 wagner wagner  184 jun 18 21:35 install-howtio.sh
+   -rw-rw-r--. 1 wagner wagner  172 ago  6 22:41 karaf_usage.org
+   drwxrwxrwx. 2 wagner wagner 4096 ago  6 15:22 scripts
+   -rwxrwxrwx. 1 wagner wagner   91 set 18  2018 tail-f-catalina-out.sh
+   #+end_example
+* anotações diversas
+* Sobre BluePrint  
+  https://www.ibm.com/developerworks/opensource/library/os-osgiblueprint/index.html
+	
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    ...
+</blueprint>
+
+** Blueprint Component Managers
+The Blueprint XML file contains definitions of various component managers. 
+The Blueprint Container specification defines four main component
+managers: 
+a *bean manager*, a *service manager*, and *two service reference managers*. E
+
+** Blueprint Component Managers Attribuites
+
+   *id*: Defines the manager ID. The id attribute is optional. If it is not specified, a unique ID will be automatically generated and assigned to a top-level manager. The inlined managers are considered anonymous and do not allow for the id attribute to be set. The manager IDs must be unique for all top-level managers within the Blueprint Container. The IDs are used so managers can refer to each other. For example, during injection, the manager will ask the referenced managers to provide an object that will be injected into the component that the manager is creating.
+   *activation*: This optional attribute defines the activation mode for the manager. Two activation modes are supported:
+        eager, where the manager is activated during Blueprint Container initialization.
+        lazy, where the manager is activated on demand.
+
+   By default, eager activation mode is assumed. However, the default activation mode for all managers within the Blueprint XML file can be changed by setting the default-activation attribute on the blueprint element. A manager is activated when it is asked to provide its first component instance. A manager is deactivated when the Blueprint Container is being destroyed. Each manager has its own activation and deactivation steps.
+   dependsOn: This optional attribute specifies a list of manager IDs. The listed managers will be activated first, before the manager is activated. A manager can have explicit and implicit dependencies. The dependsOn attribute defines the explicit dependencies. The implicit dependencies are defined by the references to other managers within a manager definition. 
+** Bean Manager Component
+   

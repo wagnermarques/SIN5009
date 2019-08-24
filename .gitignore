@@ -1,4 +1,15 @@
+#tools
+ides/*
+!ides/.gitkeep
+
+eclipse-workspace/*
+!eclipse-workspace/.gitkeep
+
+**/**/data-dir-for-postgresql
+
 # downloads
+/Downloads
+/downloads
 */**/Downloads
 */**/downloads
 
@@ -13,6 +24,7 @@
 .#*
 *~
 ~*
+
 
 # Compiled class file
 *.class

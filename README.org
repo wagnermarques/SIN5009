@@ -1,0 +1,18 @@
+#+Title: SIN5009
+#+Subtitle:
+
+* Apresentação
+
+* Preparação do Ambiente
+** Instalação do eclipse
+   Colocar na pasta ides e renomear a pasta descompactada do eclipse eclipse-modeling-2019-06-R-linux-gtk-x86_64
+   Pra fazer do download, utilizar o link abaixo:
+   http://espejito.fder.edu.uy/eclipse/technology/epp/downloads/release/2019-06/R/eclipse-modeling-2019-06-R-linux-gtk-x86_64.tar.gz
+** configurando o eclipse
+   Instalar as seguintes features
+   Modelling
+   SOA Development
+   Testing
+   Web, XML, Java EE and OSGI Enterprise Development
+
+   
