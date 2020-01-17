@@ -1,3 +1,3 @@
 #!/bin/bash
+docker build . -t wagnermarques/karaf4:0.0.1
 
-docker build -t sin5009/karaf:1.0.1 .

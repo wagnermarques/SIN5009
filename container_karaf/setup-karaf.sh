@@ -1,16 +1,13 @@
 #/bin/bash
-CONTAINER_NAME=fzl_karaf
-KARAF_HOME=/opt/apache-karaf-4.2.6/
 
-karafcli="docker exec $CONTAINER_NAME $KARAF_HOME/bin/client -r 7"
+source ./karafcli.sh
 
 #INSTALLING WEBCONSOLE
-$karafcli "feature:list | grep console"
-$karafcli "feature:install webconsole"
-$karafcli "feature:list | grep console"
+#$karafcli "feature:list | grep console"
+#$karafcli "feature:install webconsole"
+#$karafcli "feature:list | grep console"
 
 #INSTALLING CAMEL
-$karafcli "feature:repo-add camel 2.20.0"
 $karafcli "feature:install deployer camel-blueprint aries-blueprint"
 #$karafcli "feature:list | grep (camel-blueprint |  aries-blueprint) "
 
