@@ -7,6 +7,7 @@ eclipse-workspace/*
 !eclipse-workspace/.gitkeep
 
 **/**/data-dir-for-postgresql
+container_karaf/container_config_folder/etcbk/sin5009.properties
 
 # downloads
 /Downloads

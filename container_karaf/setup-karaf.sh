@@ -7,6 +7,7 @@ source ./karafcli.sh
 #https://cwiki.apache.org/confluence/display/KARAF/6.6.+Installing+additional+features
 docker exec -it karaf cp /container_config_folder/etcbk/org.ops4j.pax.url.mvn.cfg /opt/karaf/etc
 docker exec -it karaf cp /container_config_folder/etcbk/org.apache.karaf.features.repos.cfg /opt/karaf/etc/org.apache.karaf.features.repos.cfg
+docker exec -it karaf cp /container_config_folder/etcbk/sin5009.properties /opt/karaf/etc/
 
 docker stop karaf
 docker start karaf
@@ -16,7 +17,10 @@ sleep 10
 
 
 $karafcli feature:repo-add camel
-$karafcli feature:install camel-blueprint camel-stream
+$karafcli feature:install camel camel-core camel-blueprint camel-stream camel-mail
+
+#DEPLOYS
+
 #$karafcli "feature:install camel-blueprint camel-stream"
 
 #$karafcli "feature:install http"
@@ -27,9 +31,6 @@ $karafcli feature:install camel-blueprint camel-stream
 #$karafcli "feature:install deployer camel-blueprint aries-blueprint"
 #$karafcli "feature:list | grep (camel-blueprint |  aries-blueprint) "
 
-
-#camel                                   | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
-#camel-core                              | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
 #camel                                   | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
 #camel-core                              | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
 
@@ -219,7 +220,7 @@ $karafcli feature:install camel-blueprint camel-stream
 #camel-jpa                               | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
 #camel-kafka                             | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
 #camel-ldap                              | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
-#camel-mail                              | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
+
 #camel-quartz                            | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
 #camel-quartz2                           | 2.15.2           |          | Uninstalled | camel-2.15.2                      |
 #camel-smpp                              | 2.15.2           |          | Uninstalled | camel-2.15.2                      |

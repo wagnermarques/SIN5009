@@ -27,8 +27,9 @@ services:
     container_name: karaf
     volumes:
             - ./container_karaf/container_config_folder:/container_config_folder
+            - ./container_karaf/deploy:/opt/karaf/deploy
             # - ./container_karaf/container_config_folder/etc:/opt/karaf/etc      
-            # - ./container_karaf/deploy:/opt/karaf/deploy
+           
         #  - ./container_karaf/data:/opt/karaf/data  
     ports:
             - "1099:1099"
