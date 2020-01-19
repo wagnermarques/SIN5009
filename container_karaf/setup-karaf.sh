@@ -2,13 +2,29 @@
 
 source ./karafcli.sh
 
-#INSTALLING WEBCONSOLE
-#$karafcli "feature:list | grep console"
+#docker exec -it karaf ls /container_config_folder/etcbk/org.ops4j.pax.url.mvn.cfg
+#https://support.sonatype.com/hc/en-us/articles/360041287334
+#https://cwiki.apache.org/confluence/display/KARAF/6.6.+Installing+additional+features
+docker exec -it karaf cp /container_config_folder/etcbk/org.ops4j.pax.url.mvn.cfg /opt/karaf/etc
+docker exec -it karaf cp /container_config_folder/etcbk/org.apache.karaf.features.repos.cfg /opt/karaf/etc/org.apache.karaf.features.repos.cfg
+
+docker stop karaf
+docker start karaf
+
+echo "wait karaf container restart...."
+sleep 10
+
+
+$karafcli feature:repo-add camel
+$karafcli feature:install camel-blueprint camel-stream
+#$karafcli "feature:install camel-blueprint camel-stream"
+
+#$karafcli "feature:install http"
 #$karafcli "feature:install webconsole"
 #$karafcli "feature:list | grep console"
 
 #INSTALLING CAMEL
-$karafcli "feature:install deployer camel-blueprint aries-blueprint"
+#$karafcli "feature:install deployer camel-blueprint aries-blueprint"
 #$karafcli "feature:list | grep (camel-blueprint |  aries-blueprint) "
 
 

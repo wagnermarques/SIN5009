@@ -25,7 +25,8 @@ services:
   karaf:
     build: container_karaf
     container_name: karaf
-    #volumes:
+    volumes:
+            - ./container_karaf/container_config_folder:/container_config_folder
             # - ./container_karaf/container_config_folder/etc:/opt/karaf/etc      
             # - ./container_karaf/deploy:/opt/karaf/deploy
         #  - ./container_karaf/data:/opt/karaf/data  
